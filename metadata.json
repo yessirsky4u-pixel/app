@@ -1,0 +1,5 @@
+{
+  "name": "Gemini Trading Bot UI",
+  "description": "A user interface for managing and monitoring a trading bot. This application provides a dashboard for performance overview, a configuration panel to set trading strategies, and a trade history log. It also features a Gemini-powered Strategy Advisor to help users formulate trading parameters.",
+  "requestFramePermissions": []
+}
