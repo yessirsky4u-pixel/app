@@ -62,7 +62,8 @@ export const StrategyAdvisor: React.FC<StrategyAdvisorProps> = ({ onApplySuggest
                     <h4 className="font-semibold text-white mb-2">Suggestion Received:</h4>
                     <ul className="text-sm space-y-1 text-gray-300">
                         {Object.entries(suggestion).map(([key, value]) => (
-                             <li key={key}><span className="font-medium capitalize text-gray-400">{key.replace(/([A-Z])/g, ' $1')}:</span> {value}</li>
+                             // Fix: Safely render the value to avoid 'unknown' type error.
+                             <li key={key}><span className="font-medium capitalize text-gray-400">{key.replace(/([A-Z])/g, ' $1')}:</span> {value !== undefined ? String(value) : 'Not set'}</li>
                         ))}
                     </ul>
                     <Button onClick={() => onApplySuggestion(suggestion)} className="w-full mt-4">

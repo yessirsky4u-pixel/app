@@ -1,4 +1,10 @@
-import { GroundingChunk as GenAIGroundingChunk } from "@google/genai";
+
+export enum View {
+  Dashboard = 'Dashboard',
+  Configuration = 'Configuration',
+  TradeHistory = 'Trade History',
+  News = 'News',
+}
 
 export enum BotStatus {
   Running = 'Running',
@@ -9,13 +15,6 @@ export enum BotStatus {
 export enum TradeType {
   Buy = 'Buy',
   Sell = 'Sell',
-}
-
-export enum View {
-    Dashboard = 'Dashboard',
-    Configuration = 'Configuration',
-    TradeHistory = 'Trade History',
-    News = 'News',
 }
 
 export interface Trade {
@@ -35,8 +34,8 @@ export interface PerformanceDataPoint {
 }
 
 export interface BotConfig {
-  tradingPair: string;
   strategy: 'Grid' | 'DCA' | 'RSI';
+  tradingPair: string;
   investment: number;
   gridLevels?: number;
   gridStep?: number;
@@ -45,17 +44,17 @@ export interface BotConfig {
 }
 
 export interface MarketCoin {
-  name: string;
-  symbol: string;
-  price: number;
-  change24h: number;
+    name: string;
+    symbol: string;
+    price: number;
+    change24h: number;
 }
 
 export interface GroundingChunk {
-  web: {
-    uri: string;
-    title: string;
-  };
+    web: {
+        uri: string;
+        title: string;
+    };
 }
 
 export interface MarketSummary {
@@ -73,4 +72,12 @@ export interface NewsArticle {
 export interface NewsResponse {
     articles: NewsArticle[];
     sources: GroundingChunk[];
+}
+
+export interface PriceAlert {
+  id: string;
+  coin: string;
+  targetPrice: number;
+  condition: 'above' | 'below';
+  isActive: boolean;
 }
